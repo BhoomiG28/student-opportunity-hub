@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request,redirect,  url_for
+from flask import Blueprint, render_template, request,redirect,  url_for, flash
 from flask_login import login_user, logout_user, login_required
 from models import db
 from models.user import User
@@ -16,7 +16,8 @@ def register():
 
         existing_user=User.query.filter_by(email=email).first()
         if existing_user:
-            return "Email already registered!"
+           flash("Email already exists!", "danger")
+           return redirect(url_for("auth.register"))
         
         hashed_password=generate_password_hash(password)
 
@@ -27,6 +28,7 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
+        flash("Registration successful! Please login.", "success")
         return redirect(url_for("auth.login"))
     
     return render_template("register.html")
@@ -42,10 +44,10 @@ def login():
 
         if user and check_password_hash(user.password, password):
            login_user(user)
-           return redirect(url_for("dashboard"))
+           return redirect(url_for("dashboard.dashboard_home"))
 
-        return "Invalid Email or Password"
-
+        flash("Invalid email or password.", "danger")
+        return redirect(url_for("auth.login"))
      return render_template("login.html")
 
 @auth.route("/logout")

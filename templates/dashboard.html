@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Welcome, {{ user.name }} 👋
+</h2>
+
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Total Opportunities</h5>
+
+                <h2>0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Applications</h5>
+
+                <h2>0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Accepted</h5>
+
+                <h2>0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Rejected</h5>
+
+                <h2>0</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="mt-4">
+
+    <a href="#" class="btn btn-primary">
+        + Add Opportunity
+    </a>
+
+</div>
+
+{% endblock %}

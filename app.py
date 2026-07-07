@@ -4,6 +4,7 @@ from models import db
 from routes.auth import auth
 from flask_login import LoginManager
 from flask_login import login_required, current_user
+from routes.dashboard import dashboard
 
 app = Flask(__name__)
 
@@ -22,15 +23,12 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 app.register_blueprint(auth)
+app.register_blueprint(dashboard)
+
 
 @app.route("/")
 def home():
     return "Student Opportunity Hub is Running!"
-
-@app.route("/dashboard")
-@login_required
-def dashboard():
-    return f"Welcome {current_user.name}"
 
 with app.app_context():
     db.create_all()
