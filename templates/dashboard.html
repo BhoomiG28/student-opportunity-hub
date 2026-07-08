@@ -20,7 +20,7 @@ Dashboard
 
                 <h5>Total Opportunities</h5>
 
-                <h2>0</h2>
+                <h2>{{ total_opportunities }}</h2>
 
             </div>
 
@@ -80,8 +80,14 @@ Dashboard
 
 <div class="mt-4">
 
-    <a href="#" class="btn btn-primary">
+    <a href="{{ url_for('opportunity.add_opportunity') }}"
+        class="btn btn-primary">
         + Add Opportunity
+    </a>
+    
+    <a href="{{ url_for('opportunity.view_opportunities') }}"
+        class="btn btn-success ms-2">
+        View Opportunities
     </a>
 
 </div>

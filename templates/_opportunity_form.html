@@ -1,0 +1,96 @@
+<form method="POST">
+
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+
+        <input
+            type="text"
+            name="title"
+            class="form-control"
+            value="{{ opportunity.title if opportunity else '' }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Company</label>
+
+        <input
+            type="text"
+            name="company"
+            class="form-control"
+            value="{{ opportunity.company if opportunity else '' }}"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+
+        <select
+            name="category"
+            class="form-select">
+
+            {% for item in [
+                "Internship",
+                "Hackathon",
+                "Scholarship",
+                "Competition",
+                "Certification"
+            ] %}
+
+                <option
+                    value="{{ item }}"
+                    {% if opportunity and opportunity.category == item %}
+                        selected
+                    {% endif %}
+                >
+                    {{ item }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Deadline</label>
+
+        <input
+            type="date"
+            name="deadline"
+            class="form-control"
+            value="{{ opportunity.deadline if opportunity else '' }}">
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Link</label>
+
+        <input
+            type="url"
+            name="link"
+            class="form-control"
+            value="{{ opportunity.link if opportunity else '' }}">
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Description</label>
+
+        <textarea
+            name="description"
+            rows="5"
+            class="form-control">{{ opportunity.description if opportunity else '' }}</textarea>
+
+    </div>
+
+    <button class="btn btn-primary">
+
+        {{ button_text }}
+
+    </button>
+
+</form>

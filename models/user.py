@@ -15,3 +15,8 @@ class User(db.Model, UserMixin):
         backref="user",
         lazy=True
     )
+    opportunities = db.relationship(
+    "Opportunity",
+    backref="owner",
+    lazy=True
+    )

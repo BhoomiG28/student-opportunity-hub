@@ -1,6 +1,7 @@
 from . import db
 
 class Opportunity(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
 
     title = db.Column(db.String(200), nullable=False)
@@ -15,8 +16,8 @@ class Opportunity(db.Model):
 
     link = db.Column(db.String(300))
 
-    applications = db.relationship(
-        "Application",
-        backref="opportunity",
-        lazy=True
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("user.id"),
+        nullable=False
     )

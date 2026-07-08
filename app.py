@@ -5,6 +5,7 @@ from routes.auth import auth
 from flask_login import LoginManager
 from flask_login import login_required, current_user
 from routes.dashboard import dashboard
+from routes.opportunity import opportunity
 
 app = Flask(__name__)
 
@@ -24,6 +25,7 @@ def load_user(user_id):
 
 app.register_blueprint(auth)
 app.register_blueprint(dashboard)
+app.register_blueprint(opportunity)
 
 
 @app.route("/")
